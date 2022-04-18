@@ -1,0 +1,26 @@
+<?php
+
+/*
+ * Complete the 'timeConversion' function below.
+ *
+ * The function is expected to return a STRING.
+ * The function accepts STRING s as parameter.
+ */
+
+function timeConversion($s) {
+    // Write your code here
+    $new_time = DateTime::createFromFormat('h:i:s A', $s);
+    $time_24 = $new_time->format('H:i:s');
+    return $time_24;
+}
+
+$fptr = fopen(getenv("OUTPUT_PATH"), "w");
+
+$s = rtrim(fgets(STDIN), "\r\n");
+
+$result = timeConversion($s);
+
+fwrite($fptr, $result . "\n");
+
+fclose($fptr);
+
